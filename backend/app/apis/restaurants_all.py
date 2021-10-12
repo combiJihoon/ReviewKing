@@ -2,15 +2,11 @@ from flask import Blueprint, jsonify
 from flask_restful import Resource, Api, reqparse
 from models import Restaurants, Categories
 
-restaurantlist = Blueprint("restaurantlist", __name__)
-api = Api(restaurantlist)
-
-# request를 받기 위해서는 parser에 argument 추가 필요
-parser = reqparse.RequestParser()
-parser.add_argument("restaurant_name", type=str)
+restaurants_all = Blueprint("all-restaurant", __name__)
+api = Api(restaurants_all)
 
 
-class Restaurantlist(Resource):
+class AllRestaurants(Resource):
     # 음식점 검색창 제공
     def get(self):
         # 지도 제공
@@ -30,7 +26,7 @@ class Restaurantlist(Resource):
             }
             data.append(tmp)
 
-        return jsonify(status=200, data=data)
+        return jsonify(status=200, restaurants=data)
 
 
-api.add_resource(Restaurantlist, "/reviews")
+api.add_resource(AllRestaurants, "/reviews")

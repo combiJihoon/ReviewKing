@@ -1,15 +1,11 @@
 from flask import Blueprint, jsonify
 from flask_restful import Resource, Api, reqparse
-from models import Restaurants, Categories, Reviews, TotalRating, Menus
+from models import Restaurants, Categories, TotalRating
 from sqlalchemy.sql import func
 from app import db
 
 ranks_result = Blueprint("ranks_result", __name__)
 api = Api(ranks_result)
-
-# request를 받기 위해서는 parser에 argument 추가 필요
-parser = reqparse.RequestParser()
-parser.add_argument("category", type=str)
 
 
 class RanksResult(Resource):
@@ -29,22 +25,23 @@ class RanksResult(Resource):
             for restaurant in restaurants_rated:
                 if rank == 4:
                     break
-                menus = Menus.query.filter_by(restaurant_id=restaurant.id).all()
                 total_rating = TotalRating.query.filter_by(
                     restaurant_id=restaurant.id
                 ).first()
                 tmp = {
                     "name": restaurant.name,
-                    "integrated_rating": total_rating.integrated_rating,
+                    "integrated_rating": round(
+                        float(total_rating.integrated_rating), 2
+                    ),
                     "img_url": restaurant.img_url,
-                    "latitude": restaurant.latitude_y,
-                    "longitude": restaurant.longitude_x,
+                    "lat": restaurant.latitude_y,
+                    "lng": restaurant.longitude_x,
                     "rank": rank,
                 }
                 result.append(tmp)
                 rank += 1
 
-            return jsonify(status=200, data=result)
+            return jsonify(status=200, category=category.category, result=result)
         else:
             return jsonify(status=404)
 

@@ -29,9 +29,13 @@ def create_app():
     import models
 
     # blueprint
-    from apis.all_restaurant import restaurantlist
+    from apis.restaurants_all import restaurants_all
 
-    app.register_blueprint(restaurantlist)
+    app.register_blueprint(restaurants_all)
+
+    from apis.restaurants_reviews import restaurants_reviews
+
+    app.register_blueprint(restaurants_reviews)
 
     from apis.ranks_result import ranks_result
 
@@ -41,20 +45,20 @@ def create_app():
 
     app.register_blueprint(ranks_categories)
 
-    from apis.what_to_eat_categories import eat_categories
+    from apis.what_to_eat_subcategories import what_to_eat_subcategories
 
-    app.register_blueprint(eat_categories)
+    app.register_blueprint(what_to_eat_subcategories)
 
-    from apis.what_to_eat_result import eat_result
+    from apis.what_to_eat_keywords import what_to_eat_keywords
 
-    app.register_blueprint(eat_result)
+    app.register_blueprint(what_to_eat_keywords)
 
-    from apis.review_restaurant import reviews
+    from apis.what_to_eat_result import what_to_eat_result
 
-    app.register_blueprint(reviews)
+    app.register_blueprint(what_to_eat_result)
 
     return app
 
 
 if __name__ == "__main__":
-    create_app().run(host="0.0.0.0", port=5000, debug=True)
+    create_app().run(host="0.0.0.0", port=5000, debug=False)
