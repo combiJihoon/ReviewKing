@@ -31,6 +31,8 @@
   </tr>
 </tbody></table>
 
+- Docker container를 AWS EC2에 생성하여 프로젝트를 배포하였습니다.
+
 ## REST API
 
 <table><tbody>
@@ -56,6 +58,8 @@
  </tr>
  </tbody></table>
 
+- 빠른 웹 서비스 배포를 위해 Flask를 웹 프레임워크로 사용하여 AWS EC2에 배포하였습니다.
+
 ### Database
 
 <table><tbody>
@@ -72,6 +76,10 @@
     <td align = "center">AWS RDS</td>
   </tr>
 </tbody></table>
+
+#### ERD
+
+  <img src="https://user-images.githubusercontent.com/74451822/137099113-9f1c67dd-4a26-4366-9dfa-0305af828478.png" width="400px"/>
 
 # 🔧 Proejct Setup / and Organization
 
