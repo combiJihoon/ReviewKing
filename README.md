@@ -79,7 +79,7 @@
 
 #### ERD
 
-  <img src="https://user-images.githubusercontent.com/74451822/137099113-9f1c67dd-4a26-4366-9dfa-0305af828478.png" width="400px"/>
+  <img src="https://user-images.githubusercontent.com/74451822/137099113-9f1c67dd-4a26-4366-9dfa-0305af828478.png" width="800px"/>
 
 # 🔧 Proejct Setup / and Organization
 
